@@ -21,6 +21,10 @@ export default class CountClass extends Component {
         }))
     }
 
+    componentDidMount() {}
+    componentDidUpdate() {}
+    componentWillUnmount() {}
+
     render() {
         return (
             <div>
