@@ -1,22 +1,7 @@
 import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
 
-import { Link } from 'react-router-dom'
-
-const menuItems = [
-    {
-        name: 'Home',
-        href: '/',
-    },
-    {
-        name: 'About',
-        href: '/about',
-    },
-    {
-        name: 'Contact',
-        href: '/contact',
-    },
-]
+import { Link, NavLink } from 'react-router-dom'
 
 export function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -24,6 +9,29 @@ export function Header() {
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen)
     }
+
+    const menu = [
+        {
+            name: 'Home',
+            path: '/',
+        },
+        {
+            name: 'About',
+            path: '/about',
+        },
+        {
+            name: 'Products',
+            path: '/products',
+        },
+        {
+            name: 'Contact',
+            path: '/contact',
+        },
+        {
+            name: 'ABC',
+            path: '/avc',
+        },
+    ]
 
     return (
         <div className="relative w-full bg-white">
@@ -47,14 +55,20 @@ export function Header() {
                 </div>
                 <div className="hidden lg:block">
                     <ul className="inline-flex space-x-8">
-                        {menuItems.map((item) => (
+                        {menu.map((item) => (
                             <li key={item.name}>
-                                <Link
-                                    to={item.href}
-                                    className="text-sm font-semibold text-gray-800 hover:text-gray-900"
+                                <NavLink
+                                    to={item.path}
+                                    className={({ isActive }) =>
+                                        `${
+                                            isActive
+                                                ? 'text-orange-400'
+                                                : 'text-slate-800'
+                                        }`
+                                    }
                                 >
                                     {item.name}
-                                </Link>
+                                </NavLink>
                             </li>
                         ))}
                     </ul>
@@ -113,7 +127,7 @@ export function Header() {
                                 </div>
                                 <div className="mt-6">
                                     <nav className="grid gap-y-4">
-                                        {menuItems.map((item) => (
+                                        {menu.map((item) => (
                                             <Link
                                                 key={item.name}
                                                 href={item.href}
