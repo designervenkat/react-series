@@ -12,7 +12,8 @@ function App() {
         // access the all todos first and then add the new todo to it
         // use spread operator to send the rest of the properties
         // we need to send an object with id and rest of the properties
-        setTodos((prev) => [{ ...prev, id: Date.now(), ...todo }])
+        // Fixed the code
+        setTodos((prev) => [{ id: Date.now(), ...todo }, ...prev])
     }
     const updateTodo = (id, todo) => {
         // need to check if id matches with the current edited id
